@@ -1,6 +1,7 @@
-import 'package:fcm/app/widget/multiprovider.dart';
 import 'package:fcm/router/app.router.gr.dart';
 import 'package:flutter/material.dart';
+
+import 'multiprovider.dart';
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);

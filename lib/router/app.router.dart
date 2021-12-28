@@ -16,12 +16,10 @@ import 'package:fcm/push/extra.page.dart';
           path: '',
           page: MyHomePage,
         ),
-        AutoRoute(
-          page: DashboardPage,
-        ),
+        AutoRoute(page: DashboardPage),
       ],
     ),
-    AutoRoute(name: 'Extra', page: ExtraPage)
+    AutoRoute(page: ExtraPage),
   ],
 )
 class $AppRouter {}

@@ -26,7 +26,7 @@ class AppRouter extends _i5.RootStackRouter {
       return _i5.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.AuthFlow());
     },
-    Extra.name: (routeData) {
+    ExtraRoute.name: (routeData) {
       return _i5.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i2.ExtraPage());
     },
@@ -47,7 +47,7 @@ class AppRouter extends _i5.RootStackRouter {
           _i5.RouteConfig(DashboardRoute.name,
               path: 'dashboard-page', parent: AuthFlow.name)
         ]),
-        _i5.RouteConfig(Extra.name, path: '/extra-page')
+        _i5.RouteConfig(ExtraRoute.name, path: '/extra-page')
       ];
 }
 
@@ -62,10 +62,10 @@ class AuthFlow extends _i5.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.ExtraPage]
-class Extra extends _i5.PageRouteInfo<void> {
-  const Extra() : super(Extra.name, path: '/extra-page');
+class ExtraRoute extends _i5.PageRouteInfo<void> {
+  const ExtraRoute() : super(ExtraRoute.name, path: '/extra-page');
 
-  static const String name = 'Extra';
+  static const String name = 'ExtraRoute';
 }
 
 /// generated route for

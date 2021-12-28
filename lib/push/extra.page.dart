@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:fcm/router/router.dart';
 import 'package:flutter/material.dart';
 
 class ExtraPage extends StatelessWidget {
@@ -5,6 +8,7 @@ class ExtraPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(AutoRouter.of(context).routeData.path);
     return const Scaffold(
       body: Center(
         child: Text("Extra"),

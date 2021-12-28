@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:fcm/Home/logic/cubit/authflow_cubit.dart';
 import 'package:fcm/router/app.router.gr.dart';
 import 'package:fcm/router/router.dart';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'package:flutter/material.dart';
@@ -17,11 +18,21 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   String data = "";
+
+  checkForIntialMessage() async {
+    RemoteMessage? initailMsg =
+        await FirebaseMessaging.instance.getInitialMessage();
+    if (initailMsg != null) {
+      context.router.push(const ExtraRoute());
+    }
+  }
+
   @override
   void initState() {
     super.initState();
 
     FirebaseMessaging.instance.getInitialMessage();
+    checkForIntialMessage();
     FirebaseMessaging.onMessage.listen((msg) {
       if (msg.notification != null) {
         log(msg.notification!.body.toString());
@@ -31,7 +42,14 @@ class _DashboardPageState extends State<DashboardPage> {
       }
     });
 
-    FirebaseMessaging.onMessageOpenedApp.listen((msg) {});
+    FirebaseMessaging.onMessageOpenedApp.listen((_msg) {
+      String msg = _msg.data["route"];
+
+      switch (msg) {
+        case "Extra":
+          context.router.push(const ExtraRoute());
+      }
+    });
   }
 
   @override
@@ -50,14 +68,9 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: const Text("Log out")),
             TextButton(
                 onPressed: () {
-                  context.router.pushNamed('/Extra');
+                  context.router.push(const ExtraRoute());
                 },
                 child: const Text("/Extra")),
-            TextButton(
-                onPressed: () {
-                  context.router.pushNamed('Extra');
-                },
-                child: const Text("Extra"))
           ],
         ),
       ),
